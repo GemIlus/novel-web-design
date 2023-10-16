@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hư Thiên Thư Viện</title>
+        <link rel="icon" type="image/x-icon" href="static/img/logo2.png">
+
+        <link rel="stylesheet" href="static/css/style.css"> <!-- You can create a separate CSS file for styling -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+<!-- ... (head and other parts remain unchanged) -->
+
+<body>
+
+    <!-- Navigation bar -->
+
+    <!-- Header container -->
+    <header style="background-image: url(static/img/logo8.png);">
+        <!-- Logo -->
+        <a href="{{ url_for('main.index') }}" id="logo">
+            <img src="static/img/logo2.png" alt="Hư Thiên Thư Viện Logo">
+        </a>
+
+        <!-- Search bar -->
+        
+    </header>
+
+    <!-- Navigation bar -->
+    <div class="box_nav">
+        <div class='nav'>
+            <ul>
+                <li class="nav-li">
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                </li>
+                <li class="nav-li">
+                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                </li>
+                
+                <li class="nav-li">
+                    <a href="{{ url_for('main.rank') }}">Rank</a>
+                </li>
+                <!-- Add similar links for other pages -->
+                
+            {% if user %}
+                <li class="nav-li">
+                    {{ user }}
+                </li>
+                <li class="nav-li">
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                </li>
+                
+            {% else %}
+                <li class="nav-li">
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                    
+                </li>
+                
+            {% endif %}
+            </ul>
+        </div>
+        <div class="search">
+                    <form action="" id="search-box">
+                        <input type="text" id="search-text" placeholder="Đạo hữu tìm gì..." required>
+                        <button id='search-btn'><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+        </div>
+    </div>
+
+    
+    
+    <!-- Book Catalog Page -->
+    <div class='container'style="background-image: url(static/img/thuymac3.png)">
+        
+        <div class="pages" style="background-image: url(static/img/logo11.png);background-size: cover; background-position: center;">
+        <br>
+        <h2 style="color:#3e3d43; ">--ĐỀ XUẤT--</h2>
+        <table class="catalog">
+            <tr class="image_novel" >
+                <th>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                    <img src="static/img/tiennghichimg.jpg" style="height: 240px; width:160px;" alt="tiennghich">
+                </a>
+                </th>
+                <th>
+                    <a href="{{ url_for('main.phamnhantutien') }}" >
+            <!-- Repeat the above book section for each book in your catalog -->
+                    <img src="static/img/phamnhantutien.jpg" alt="phamnhantutien">
+                    </a>
+                </th>
+                <th>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                    <img src="static/img/gia-thien.jpg" style="height: 240px; width:160px ;" alt="giathien">
+                    </a>
+                </th>
+                <th>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                    <img src="static/img/cau-ma-1.jpg" style="height: 240px; width:160px ;" alt="cauma">
+                    </a>
+                </th>
+                <th>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                    <img src="static/img/nhat-niem-vinh-hang.jpg" style="height: 240px; width:160px ;" alt="nhatniemvinhhang">
+                    </a>
+                </th>
+                <th>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                    <img src="static/img/linh-vu-thien-ha.jpg" style="height: 240px; width:160px ;" alt="nhatniemvinhhang">
+                    </a>
+                </th>
+                <th>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                    <img src="static/img/the-gioi-hoan-my.jpeg" style="height: 240px; width:160px ;" alt="nhatniemvinhhang">
+                    </a>
+                </th>
+            </tr>
+            <tr class="name_novel">
+                <td>
+                <a href="{{ url_for('main.tiennghich') }}" >
+                    <h3>Tiên nghịch</h3>
+                    </a> 
+                </td>
+                <td>
+                <a href="{{ url_for('main.phamnhantutien') }}" >
+                    <h3>Phàm Nhân Tu Tiên</h3>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                        <h3>Già thiên</h3>
+                    </a> 
+                </td>
+                <td>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                        <h3>Cầu ma</h3>
+                    </a> 
+                </td>
+                <td>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                        <h3>Nhất niệm vĩnh hằng</h3>
+                    </a> 
+                </td>
+                <td>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                        <h3>Linh vũ thiên hạ</h3>
+                    </a> 
+                </td>
+                <td>
+                    <a href="{{ url_for('main.tiennghich') }}" >
+                        <h3>Thế giới hoàn mỹ</h3>
+                    </a> 
+                </td>
+            </tr>
+        </table>
+        <br>
+       
+
+        <!------------------------------ danh sach novel--------------------------------- -->
+        <div class="section1" style="background-image: url(static/img/logo11.png);background-size: cover; background-position: center;">
+            <h2 style="color:#3e3d43"><i class="fa-solid fa-heart" style="color: #707bfc;"></i> Yêu thích</h2>
+
+            <ol>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/tiennghichimg.jpg" alt="tiennghich">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Tiên nghịch- Nhĩ Căn</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/phamnhantutien.jpg" alt="phamnhantutien">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Phàm Nhân Tu Tiên- Vong Ngữ</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/cau-ma-1.jpg" alt="cau-ma">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Cầu ma- Nhĩ Căn</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/nhat-niem-vinh-hang.jpg" alt="nhat-niem-vinh-hang">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Nhất Niệm Vĩnh Hằng- Nhĩ Căn</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/gia-thien.jpg" alt="gia-thien">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Già Thiên-Thần Đông</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/linh-vu-thien-ha.jpg" alt="linh-vu-thien-ha">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">linh Vũ Thiên Hạ- Vũ Phong</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/the-gioi-hoan-my.jpeg" alt="the-gioi-hoan-my">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Thế Giới Hoàn Mỹ- Thần Đông</span>
+                        </a>
+                      </div>
+                </li>
+                <hr>
+                
+                
+                <!-- Thêm các mục khác cần thiết -->
+            </ol>
+            
+        </div>
+    
+        <div class="section2">
+            <h2 style="color:#3e3d43"><i class="fa-solid fa-fire-flame-curved" style="color: #707bfc;"></i> Thịnh hành trong tuần <i class="fa-solid fa-fire-flame-curved" style="color: #707bfc;" ></i></h2>
+            <ol>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/tiennghichimg.jpg" alt="tiennghich">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Tiên nghịch- Nhĩ Căn</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter">
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/phamnhantutien.jpg" alt="phamnhantutien">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Phàm Nhân Tu Tiên- Vong Ngữ</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter" >
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/cau-ma-1.jpg" alt="cau-ma">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Cầu ma- Nhĩ Căn</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter" >
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/nhat-niem-vinh-hang.jpg" alt="nhat-niem-vinh-hang">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Nhất Niệm Vĩnh Hằng- Nhĩ Căn</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter" >
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/gia-thien.jpg" alt="gia-thien">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Già Thiên-Thần Đông</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter" >
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/linh-vu-thien-ha.jpg" alt="linh-vu-thien-ha">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">linh Vũ Thiên Hạ- Vũ Phong</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter" >
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                <li>
+                    <div class="inline-container">
+                        <img src="static/img/the-gioi-hoan-my.jpeg" alt="the-gioi-hoan-my">
+                        <a href="{{ url_for('main.tiennghich') }}">
+                        <span class="inline_novel_name">Thế Giới Hoàn Mỹ- Thần Đông</span>
+                        </a>
+                      </div>
+                      <span class="container_chapter">
+                        <a href="{{url_for('main.tiennghich')}}" style="font-style: italic; color:#333">
+                            chương 1893
+                        </a>
+                      </span>
+                </li>
+                <hr>
+                
+                
+                <!-- Thêm các mục khác cần thiết -->
+            </ol>
+        </div>
+        <BR>
+        <BR>
+        <div class="viet_author_box"  >
+            <div class="content-container">
+                
+            <h2 class="complete">
+                <i class="fa-solid fa-book-open" style="color:#707bfc"></i>_Đã Hoàn Thành</h2>
+            <a class="more" href="{{url_for('main.author')}}"> &#8594;	xem tất cả</a>
+            </div>
+            <br>
+            <div class="container-viet-author">
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/nguyen-ton.jpg" style="height: 230px; width: 430px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Nguyên Tôn
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/the-gioi-hoan-my2.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Thế Giới Hoàn Mỹ
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/tien-nghich-2.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Tiên Nghịch
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/linh-vu-thien-ha-1.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Linh Vũ Thiên Hạ
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/nhat-niem-vinh-hang-2.jpeg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Nhất Niệm Vĩnh Hằng
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/dau-pha-thuong-khung.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Đấu Phá Thương Khung
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/pham-nhan-tu-tien.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Phàm Nhân Tu Tiên
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/nga-duc.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Ngã Dục Phong Thiên
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/quang-am-chi-ngoai.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Quang Âm Chi Ngoại
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/thon-phe-tinh-khong.png" style="height: 110px; width: 210px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Thôn Phệ Tinh Không
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/gia-thien2.jpeg" style="height: 110px; width: 210px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Già Thiên
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/dau-la.jpg" style="height: 110px; width: 216px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Đấu La Đại Lục 1
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/quy-bi.jpg" style="height: 110px; width: 216px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                            Quỷ Bí Chi Chủ
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tray-item">
+                    <a href="{{url_for('main.tiennghich')}}">
+                        <img src="static/img/tong-tai.png" style="height: 110px; width: 216px;border: 0; vertical-align: middle;" alt="tien_nghich">
+                        <div class="tray_content">
+                            <div class="tray_chapter">
+                                Chương 1
+                            </div>
+                            <div class="tray_name">
+                                Tổng Tài Tại Thượng
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                
+            </div>
+
+        </div>
+        <br>
+        <div class="section3" style="background-image: url(static/img/logo10.png);background-size: cover; background-position: center;">
+            <h2 style="color:#3e3d43">--------------------------------TRAILER PHIM------------------------------</h2>
+            <video width="550" height="300" controls style="margin-left:30px; ">
+                <source src="/static/video/tien_nghich.mp4" type="video/mp4">
+              </video>
+            <div class="video_trailer">
+                <p style="color: #993838;">
+                [ Trailer ] Tiên Nghịch | Renegade Immortal | 仙逆 Xian Ni | Dự kiến khởi chiếu vào tháng 8 năm 2023.</p>
+                <hr>
+               <p style="color: rgb(32, 40, 48);"> Tiên Nghịch là câu chuyện Tiên Hiệp kể về Vương Lâm - một thiếu niên bình thường, may mắn được gia nhập vào một môn phái tu tiên xuống dốc của nước Triệu, vì thiếu linh căn, vì một hiểu nhầm tai hại, vì một khối thiết tinh và nhờ có được một "Thần Bí Hạt Châu". Vương Lâm đã bước lên con đường tu tiên và trên con đường này, hắn sẽ đối mặt với chuyện gì?
+                </p>
+            </div>
+                
+                
+            
+            
+        </div>
+
+    
+        
+        
+        
+    </div>
+
+    
+
+    <!-- Footer -->
+    
+    
+    
+</body>   
+
+
+<footer>
+        <div class="footer-container">
+            <div class="fcontainer">
+                <div class="col-md-3"><img src="/static/img/logo2.png" height="60"></div>
+                <div class="footer-right col-md-9">
+                    © 2023 Hư Thiên Thư Viện -  Chính sách<br>
+                    Hư Thiên Thư Viện là sân chơi mở và free cho cộng đồng fan kiếm hiệp, tiên hiệp, ngôn tình.
+                    Chúc các bạn có những giây phút thư giãn thoải mái sau giờ làm việc và học tập căng thẳng.
+                </div>
+            </div>
+        </div>
+</footer>
+
+
+
+</html>

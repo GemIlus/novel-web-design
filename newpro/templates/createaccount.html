@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hư Thiên Thư Viện</title>
+    <link rel="icon" type="image/x-icon" href="static/img/logo2.png">
+    <link rel="stylesheet" href="static/css/style.css"> <!-- You can create a separate CSS file for styling -->
+    <link rel="stylesheet" href="static/css/createacc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    
+    <!-- Header container -->
+    <header style="background-image: url(static/img/logo8.png);">
+        <!-- Logo -->
+        <a href="{{ url_for('main.index') }}" id="logo">
+            <img src="static/img/logo2.png" alt="Hư Thiên Thư Viện Logo">
+        </a>
+
+        <!-- Search bar -->
+        
+    </header>
+
+    <!-- Navigation bar -->
+    <div class="box_nav">
+        <div class='nav'>
+            <ul>
+                <li class="nav-li">
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                </li>
+                <li class="nav-li">
+                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                </li>
+                
+                <li class="nav-li">
+                    <a href="{{ url_for('main.rank') }}">Rank</a>
+                </li>
+                <!-- Add similar links for other pages -->
+                
+            {% if user %}
+                <li class="nav-li">
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                </li>
+                <li class="nav-li">
+                    Hello, {{ user }}
+                </li>
+            {% else %}
+                <li class="nav-li">
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                    
+                </li>
+                
+            {% endif %}
+            </ul>
+        </div>
+        <div class="search">
+                    <form action="" id="search-box">
+                        <input type="text" id="search-text" placeholder="Đạo hữu tìm gì..." required>
+                        <button id='search-btn'><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <section id="home">
+        <!-- Add any introductory content or featured books here -->
+    </section>
+
+    <!-- Book Catalog Page -->
+    
+        
+            <h3>Create an Account</h3>
+            {% with messages= get_flashed_messages() %}
+            {% if messages %}
+                {%for m in messages%}
+                    <p>{{m}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}   
+            <form id="registration-form" method="post" action="{{ url_for('auth.createaccount') }}">
+                <label for="create-username">Username:</label>
+            <input type="text" id="create-username" placeholder="username" name="create-username" required>
+
+            <label for="create-password">Password:</label>
+            <input type="password" id="create-password" placeholder="password" name="create-password" required>
+
+            <button type="submit">register</button>
+            <br>
+        
+            <a href="{{ url_for('auth.login') }}">Already have account? login</a>
+            </form>
+             
+        
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="fcontainer">
+                <div class="col-md-3"><img src="/static/img/logo2.png" height="60"></div>
+                <div class="footer-right col-md-9">
+                    © 2023 Hư Thiên Thư Viện -  Chính sách<br>
+                    Hư Thiên Thư Viện là sân chơi mở và free cho cộng đồng fan kiếm hiệp, tiên hiệp, ngôn tình.
+                    Chúc các bạn có những giây phút thư giãn thoải mái sau giờ làm việc và học tập căng thẳng.
+                </div>
+            </div>
+        </div>
+</footer>
+
+</body>
+
+</html>

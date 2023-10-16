@@ -1,0 +1,513 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color:white;
+    position: absolute;
+    margin: 0 auto; /* Auto để căn giữa, 0 để trống 2 bên */
+    
+    
+}
+
+
+h2 {
+    justify-content: center;
+    text-align: center;
+    color: #993838;
+}
+
+header {
+    background-size: cover; /* Cover the entire header with the background image */
+    background-position: center; /* Center the background image */
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+/* h1{
+    width: 400px;
+    color:#333;
+    text-align: center;
+    margin-left:530px;
+    margin-top:50px;
+    margin-left:530px;
+
+} */
+
+/* Logo styling */
+#logo {
+    max-height: 60px; /* Adjust the max height as needed */
+    margin-top:40px
+}
+.box_nav{
+    display: block;
+    width: 1518px;
+    position: relative;
+    z-index: 1000;
+    top: 0;
+    margin-bottom: 0px;
+    background:#3e3d43;
+
+}
+
+/* Search bar styling */
+.search{
+    display: flex;
+    box-sizing: border-box;
+    height: 25.6px;
+    width: 270px;
+    height:50.2px
+
+    
+}
+#search-box{
+    background:#3e3d43;
+    
+  
+    
+    
+}
+#search-box #search-text{
+    border: none;
+    outline: none;
+    background: none;
+    padding: 7px 10px;
+    font-size: 13.5px;
+    margin-top: 10px;
+    border-radius: 30px;
+    width: 0;
+    transition: all 0.45s ease-in-out;
+}
+#search-box #search-text:before{
+    background: none;
+}
+
+#search-box:hover #search-text ,#search-box:hover #search-text:valid {
+    background: #fff;
+    width: 150px;
+    
+}
+#search-box #search-btn{
+   background-color: black;
+   border: none;
+   
+   border-radius: 30px;
+}
+/* Navigation bar styling */
+.nav {
+    background-color: #3e3d43;
+    color: white;
+    padding: 9px;
+    float: left;
+    width: 1230px;
+    
+   
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Add space around the elements */
+    padding: 0;
+    width: 60%;
+    margin-left:420px;
+}
+
+
+
+
+.nav ul li {
+    font: Arial, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    margin-right: 90px; /* Add margin between the list items */
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+.nav-li a{
+    position: relative;
+}
+.nav-li a:after{
+    content: "";
+    position: absolute;
+    background-color: #707bfc;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+.nav-li a:hover::after{
+    width: 100%;
+}
+/* Add some basic styling for the buttons */
+.nav-li button {
+    background-color: #707bfc;
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: vertical;
+}
+
+.nav-li button:hover {
+    background-color: #606bbd;
+}
+
+.subnav{
+    color:aliceblue
+}
+/* Home Page styling */
+#home {
+    padding: 1em;
+    text-align: center;
+    color: #707bfc;
+}
+h2{
+    justify-content: center;
+}
+
+.container{
+    z-index: 2;
+    position: relative;
+    background-size: cover; /* Cover the entire header with the background image */
+    background-position: center;
+    margin-top: 8px;
+    
+}
+.pages{
+    display: block;
+    width: 1243px; /* A4 width in millimeters */
+    height: 550mm; /* A4 height in millimeters */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a shadow effect */
+    position: relative;
+    z-index: 7;
+    margin:0 auto;
+    border-radius:20px;
+    
+    
+}
+/* Book Catalog styling */
+.catalog {
+    background-color: white;
+    display: flex;
+    border: 2px solid black;
+    position: relative;
+    justify-content: space-around;
+    border-radius: 10px;
+    width: 95%;
+    margin: 0 auto;
+    z-index: 10;
+    height: 290px;
+}
+
+tbody{
+    margin-top:5px;
+}
+.name_novel td {
+    border:none;
+    text-align: left;
+    background-color: #333;
+    border-radius: 10px;
+}
+.name_novel td h3{
+    color:white;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: small;
+    
+}   
+
+.image_novel img{
+    transition: 1s;
+    overflow: hidden;
+}
+.image_novel img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+.name_novel a{
+    text-decoration: none;
+}
+
+
+
+h3{
+    font: Arial, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    font-size: medium;
+    text-align: center;
+    color: #000;
+
+}
+
+
+
+/* Sample Book Details Page styling */
+
+
+
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer styling */
+
+.section1 {
+    width: 280px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top;
+    margin-right:30px ;
+    margin-left:40px;
+    border:1px solid black;
+    border-radius: 10px;
+}
+.inline-container a{
+    position: relative;
+}
+.inline-container a:after{
+    content: "";
+    position: absolute;
+    background-color:#707bfc;
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+.inline-container a:hover::after{
+    width: 100%;
+}
+.section2 {
+    width: 60%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top;
+    margin-right:30px ;
+    margin-left:20px;
+    border:1px solid black;
+    border-radius: 10px;
+}
+
+.section3 {
+    width: 87%;
+    height: 20%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    
+    margin-right:30px ;
+    margin-left:50px;
+    border:1px solid black;
+    border-radius: 10px;
+}
+
+
+.section1 ol {
+    
+    display: block;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    justify-content: left;
+    
+}
+
+
+.inline-container {
+    display: inline-block;
+    vertical-align: middle; /* Adjust vertical alignment as needed */
+    
+}
+
+.inline-container img {
+    width:40px; /* Ensure the image doesn't exceed its container width */
+    height: 60px; /* Maintain the aspect ratio of the image */
+    vertical-align: middle; /* Align the image vertically with the text */
+}
+.inline_novel_name{
+    margin-left:10px;
+   color: #3e3d43;
+}
+.section1 li {
+    
+    color: #000000;
+}
+.section1 a{
+    text-decoration: none;
+    color:#3e3d43;
+}
+
+
+.section2 a{
+    text-decoration: none;
+    color:black;
+    font-style:oblique;
+}
+.container_chapter{
+    margin-top:20px;
+    float:right
+}
+
+.viet_author_box {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    border: 0px solid;
+    border-radius: 10px;
+    width: 1220px;
+    margin:0 auto;
+}
+
+.viet_author_box h2{
+    text-align: left;
+    text-decoration: underline;
+    margin-left:60px;
+    color:#3e3d43;
+}
+
+.more{
+    
+    font-style: oblique;
+    color:#3e3d43;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    margin-left:1060px;
+}
+
+.video_trailer{
+    float:right;
+    width:40%;
+    margin-top:40px
+}
+
+footer {
+    display: block;
+    background-color: #3e3d43;
+}
+.footer-container {
+    float: left;
+    width: 100%;
+    
+    
+    border-top: 1px solid ;
+    
+    font-size: 14px;
+    padding: 45px 0;
+    background-color: #3e3d43;
+}
+.fcontainer {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #3e3d43;
+}
+.col-md-3 {
+    width: 200px;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    background-color: #3e3d43;
+}
+.col-md-9 {
+    width: 75%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.42857143;
+    background-color: #3e3d43;
+    color:rgb(213, 213, 213)
+}
+.tray-item {
+    background: #ccc;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.tray_content {
+    background: transparent;
+    background-image: linear-gradient(180deg,hsla(0,0%,100%,0),rgba(0,0,0,.39) 34%,#000 87%);
+    bottom: 0;
+    color: #eee;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    
+}
+.tray_chapter{
+    width: 40%;
+    display: block;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tray_chapter {
+    font-size: 16px;
+    max-height: 44px;
+    overflow: hidden;
+    margin-bottom: 2px;
+    text-align: left;
+    margin-left:5px;
+}
+.tray_name{
+    font-size: 16px;
+    max-height: 44px;
+    overflow: hidden;
+    margin-bottom: 2px;
+    text-align: left;
+    margin-left:5px;
+}
+.container-viet-author{
+    display: block;
+    margin-left:65px;
+
+}
+
+.content_container{
+   height: 50px;
+}
+.tray-item img{
+    overflow: hidden;
+    transition: 1s;
+}
+.tray-item img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}

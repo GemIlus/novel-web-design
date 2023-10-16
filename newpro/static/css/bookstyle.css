@@ -1,0 +1,449 @@
+/* Style for the sub-navigation bar */
+body {
+    overflow: auto;
+    width: 100%;
+    width: 100vw;
+    overflow-x: hidden;
+
+    font-size: 14px;
+    line-height: 2.3;
+    color: #666;
+}
+
+.main-content {
+    overflow: auto;
+}
+
+
+
+
+.sub-nav {
+    background-color:rgb(246, 243, 243); /* Grey color */
+}
+
+/* Style for the sub-navigation links */
+.sub-nav ul {
+    list-style: none;
+    margin-left:15%;
+    padding: 0;
+}
+
+.sub-nav li {
+    display: inline-block;
+    margin-left:30px;
+}
+
+.sub-nav a, .sub-nav li {
+    text-decoration: none;
+    color: black; /* Text color for the links */
+    display: inline-block;
+}
+
+
+#info{
+    float:left;
+    font-weight: 500;
+    text-decoration: underline;
+    margin-top:50px;
+    margin-left:10%;
+    
+}
+h3{
+font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    padding: 0 15px 7px;
+    border-bottom: 1px solid #b5b5b5;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed",Tahoma,sans-serif;
+    float: right;
+    width: 68%;
+    text-align: center;
+}
+.top-bg-box{
+    display: block;
+    height:240px;
+    width:100%;
+    background-size: cover; /* Cover the entire header with the background image */
+    background-position: center; /* Center the background image */
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+.border-shadow {
+    position: relative;
+    z-index: 2;
+    width: 1040px;
+    height: 120px;
+    margin: 0 auto;
+    border: 2px solid #e9e9e9;
+    border: 2px solid rgba(0, 0, 0, .1);
+    border-bottom: none;
+}
+.book-detail-wrap {
+    position: relative;
+    z-index: 10;
+    min-height: 700px;
+    margin-top: -120px;
+    background-color: white;
+    bottom:200px
+}
+.center990 {
+    width: 1040px;
+    margin: 0 auto;
+    padding-left: calc(100vw - 100%);
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+div {
+    display: block;
+}
+
+.book-information {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    background: #fff;
+    height: 300px;
+    margin-left: 50px;
+}
+
+.cf {
+    zoom: 1;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+div {
+    display: block;
+}
+
+
+.cf:before{
+    display: table;
+    content: '';
+    
+}
+.book-information .book-img {
+    float: left;
+    width: 144px;
+    height: 192px;
+    margin: 20px 20px 0;
+}
+
+
+.book-img {
+    width: 72px;
+    height: 96px;
+    margin-right: 12px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+
+}
+.book-information .book-img a, .book-information .book-img img {
+    display: block;
+}
+.book-information .book-img a, .book-information .book-img img {
+    display: block;
+}
+.book-img a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .35), 0 0 5px #f9f2e9 inset;
+    margin-top: 20px;
+    margin-right:40px
+}
+.book-img a {
+    text-decoration: none;
+}
+.book-img a {
+    text-decoration: none;
+    color: #262626;
+    outline: 0;
+}
+
+
+.book-img a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.book-img a img {
+    width: 100%;
+    height: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.read-button{
+    background-color: #bf2c24;
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    width: 145px;
+    height: 40px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .35), 0 0 5px #f9f2e9 inset;
+    margin-top: 20px;
+    margin-right: 40px;
+    border-radius: 25px;
+    align-items: end;
+    justify-items: stretch;
+    justify-content: center;
+    
+    
+    
+}
+
+#reading{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    color:#b5b5b5;
+    width: 100%;
+    height: 100%;
+    
+
+}
+#rea{
+    
+    text-align: center;
+    font-size: medium;
+    border:0px;
+    padding:0px;
+    padding-right:15px;
+    outline:none
+    
+}
+
+
+.cf:after {
+    clear: both;
+}
+.book-information .book-info {
+    float: left;
+    width: 600px;
+    margin-top: 20px;
+    margin-left:50px;
+}
+.book-information .book-info {
+    float: left;
+    width: 560px;
+    margin-top: 20px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+.book-information .book-info h1 {
+    font: 700 28px/38px Arial,  'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: visible;
+    height: auto;
+    margin-bottom: 12px;
+}
+.book-information .book-info h1 {
+    font: 700 28px/38px Arial,  'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 38px;
+    margin-bottom: 12px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.book-information .book-info .tag {
+    font-size: 0;
+    overflow: hidden;
+    height: 25px;
+    margin-bottom: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.book-information .book-info .tag a.blue, .book-information .book-info .tag span.blue {
+    color: #3f5a93;
+    border-color: #9fadc9;
+}
+.book-information .book-info .tag a.blue, .book-information .book-info .tag span.blue {
+    color: #3f5a93;
+    border-color: #9fadc9;
+}
+.book-information .book-info .tag a, .book-information .book-info .tag span {
+    font: 12px/22px Arial, '-apple-system', Simsun;
+    display: inline-block;
+    overflow: hidden;
+    height: 22px;
+    margin-right: 12px;
+    padding: 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+}
+.book-information .book-info .tag a, .book-information .book-info .tag span {
+    font: 12px/22px Arial, '-apple-system', Simsun;
+    display: inline-block;
+    overflow: hidden;
+    height: 22px;
+    margin-right: 12px;
+    padding: 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+}
+.blue {
+    color: #3f5a93;
+}
+.tag a {
+    text-decoration: none;
+}
+.tag a {
+    text-decoration: none;
+    color: #262626;
+    outline: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.tag a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.book-information .book-info .tag a.red, .book-information .book-info .tag span.red {
+    transition: border .3s;
+    color: #bf2c24;
+    border-color: #ffb0b4;
+}
+
+
+.book-information .book-info .tag a, .book-information .book-info .tag span {
+    font: 12px/22px Arial, '-apple-system', Simsun;
+    display: inline-block;
+    overflow: hidden;
+    height: 22px;
+    margin-right: 12px;
+    padding: 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+}
+.red {
+    color: #bf2c24;
+}
+.book-information .book-info .tag + .intro {
+    font: 14px/20px Arial, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 11px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.chapter-list {
+    margin-top: 20px;
+}
+
+.chapter-list h3 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #b5b5b5;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed", Tahoma, sans-serif;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.chapter-list-wrap {
+    
+    margin: 30px 40px 30px 40px;
+  }
+  
+.chapter-list-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+.chapter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+.chapter-list li {
+    margin-bottom: 8px;
+  }
+  
+.chapter-list li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+.chapter-list li a:hover {
+    text-decoration: underline;
+    color: #0079C1;
+  }

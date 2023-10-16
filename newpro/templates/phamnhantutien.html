@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hư Thiên Thư Viện</title>
+        <link rel="icon" type="image/x-icon" href="static/img/logo2.png">
+
+        <link rel="stylesheet" href="/static/css/style.css"> <!-- You can create a separate CSS file for styling -->
+        
+        <link rel="stylesheet" href="/static/css/bookstyle.css">
+    </head>
+<!-- ... (head and other parts remain unchanged) -->
+
+<body>
+
+    <div class="box-center cf">
+        <nav>
+            <ul>
+                <li class="nav-li">
+                    <a href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-li">
+                    <a href="{{ url_for('catalog') }}">Thể Loại</a> 
+                </li>
+                
+                <li class="nav-li">
+                    <a href="{{ url_for('author') }}">Tác giả</a> 
+                </li>
+                <li class="nav-li">
+                    <a href="{{ url_for('rank') }}">Bảng xếp hạng</a>
+                </li>
+                <!-- Add similar links for other pages -->
+                
+            {% if user %}
+                <li class="nav-li">
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </li>
+                <li class="nav-li">
+                    Hello {{ user }}
+                </li>
+            {% else %}
+                <li class="nav-li">
+                    <a href="{{ url_for('login') }}">Login</a>
+                </li>
+            {% endif %}
+            </ul>
+            <div id="search-bar">
+                <input type="search" placeholder="Search...">
+                <button type="submit">search</button>
+            </div>
+        </nav>
+
+        <div class="sub-nav">
+            <ul>
+                <li>
+                    <a href="{{ url_for('index') }}">
+                        Home
+                    </a>
+                </li>
+                <li>/</li>
+                    
+                <li><a href="{{ url_for('book1') }}">Tiên nghịch</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top-bg-box" id="j-topBgBox" style="background-image: url(static/img/tienhiep5.jpg);">
+    </div>
+    <div class="border-shadow ">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="book-detail-wrap center990">
+        <div class="book-information cf">
+            <div class="book-img">
+                <a>
+                <img src="static/img/tiennghichimg.jpg">
+                </a>
+            </div>
+            <div class="book-info ">
+                <h1>Tiên Nghịch - 仙逆 </h1>
+                <p class="tag">
+                    <a href="{{url_for('author')}}" class="blue">Nhĩ Căn</a>
+                                <span class="blue">Đã hoàn thành</span>
+                                            <a href="{{url_for('tienhiep')}}" class="red" target="_blank" data-eid="qd_G10">Tiên Hiệp</a>
+                        
+                </p>
+                <p class="intro">Tiên Nghịch là câu chuyện Tiên Hiệp kể về Vương Lâm - một...</t></p>
+                <p>- Tu tiên là nghịch thiên hay thuận thiên, là vô tình hay hữu tình? Hãy cùng dõi theo bước chân của Vương Lâm qua 1976 chương Truyện Tiên Nghịch> để biết rõ những điều này bạn nhé!</p>
+                <p>
+                                <em><span class="ULtwOOTH-like">0 </span></em><cite>Yêu thích</cite><i>|</i>
+                    <em><span class="ULtwOOTH-view">0</span></em><cite>Lượt xem</cite><i>|</i>
+                    <em><span class="ULtwOOTH-follow">0 </span></em><cite>Theo dõi</cite><i>|</i>
+                    <em><span class="ULtwOOTH-nomi">0</span></em><cite>Đề cử tháng này</cite>
+                </p>
+                
+            </div>
+        </div>    
+        <hr>
+            <div class="chapter-list-wrap">
+                <h2 class="chapter-list-title">Danh sách chương</h2>
+                <ul class="chapter-list">
+                   <li><a href="#">Chương 1: Tẩu vào giang hồ</a></li>
+                   <li><a href="#">Chương 2: Tẩu tánh đầu sóng ngọn gió</a></li>
+                   <li><a href="#">Chương 3: Hợp lực cùng Bạch Tiên</a></li>
+                   <li><a href="#">Chương 4: Đào tạo tuyệt đối</a></li>
+                   <li><a href="#">Chương 5: Luyện tập độc nhất</a></li>
+                </ul>
+             </div>
+        
+        
+        
+        
+    
+    </div>
