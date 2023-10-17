@@ -4,7 +4,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .models import db
 import os
-
+from .models import db, Truyen, Chuong
+from datetime import datetime
 
 def create_app():
     app = Flask(__name__)
@@ -26,6 +27,56 @@ def create_app():
         db.create_all()
 
     return app
+
+def insert_data_from_folders(data_folder):
+
+    app=create_app()
+
+    with app.app_context():
+        for truyen_folder in os.listdir(data_folder):
+            truyen_path = os.path.join(data_folder, truyen_folder)
+            if os.path.isdir(truyen_path):
+            # Check if Truyen with the same name already exists
+                existing_truyen = Truyen.query.filter_by(Truyen_ten=truyen_folder).first()
+
+                if not existing_truyen:
+                    truyen_info = {
+                    "Truyen_ten": truyen_folder,
+                    # Add other Truyen attributes as needed
+                }
+
+
+                    truyen = Truyen(**truyen_info)
+                    db.session.add(truyen)
+                    db.session.commit()  # Commit the changes to get the Truyen_id
+
+                    for chapter_file in os.listdir(truyen_path):
+                        if chapter_file.endswith(".txt"):
+                            chapter_info = {
+                                "Chuong_so": int(''.join(filter(str.isdigit, chapter_file.split('.')[0]))),
+                                "Chuong_ten": chapter_file.split('.')[0],  # You might need to adjust this based on your data
+                                "Chuong_noidung": read_chapter_content(os.path.join(truyen_path, chapter_file)),  # Initialize with an empty string
+                                "truyen_id": truyen.Truyen_id
+                            }
+
+                            chapter_file_path = os.path.join(truyen_path, chapter_file)
+                            with open(chapter_file_path, 'r', encoding='utf-8') as file:
+                                chapter_info["Chuong_noidung"] = file.read()
+
+                            chuong = Chuong(**chapter_info)
+                            db.session.add(chuong)
+        db.session.commit()
+
+def read_chapter_content(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        return content
+    except Exception as e:
+        print(f"Error reading content from {file_path}: {e}")
+        return "Unknown"
+# Replace 'your_data_folder' with the actual path to your folder containing novels
+insert_data_from_folders(r'D:/web/newpro/data/truyen_chu')
 
 
 # app = Flask(__name__)
