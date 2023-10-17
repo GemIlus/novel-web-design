@@ -82,7 +82,7 @@
                 <img src="static/img/tiennghichimg.jpg">
                 </a>
                 <button class="read-button">
-                    <a href="{{url_for('main.tien_nghich_chuong_1')}}" id="reading">
+                    <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=1, chuong_so= 1) }}" id="reading">
                         <h3 id="rea">
                             Đọc
                         </h3>
@@ -113,11 +113,14 @@
             <div class="chapter-list-wrap">
                 <h2 class="chapter-list-title">Danh sách chương</h2>
                 <ul class="chapter-list">
-                   <li><a href="#">Chương 1: Tẩu vào giang hồ</a></li>
-                   <li><a href="#">Chương 2: Tẩu tánh đầu sóng ngọn gió</a></li>
-                   <li><a href="#">Chương 3: Hợp lực cùng Bạch Tiên</a></li>
-                   <li><a href="#">Chương 4: Đào tạo tuyệt đối</a></li>
-                   <li><a href="#">Chương 5: Luyện tập độc nhất</a></li>
+                    
+                    {% for chuong_so in range(1, 26) %}
+                    <li>
+                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=4, chuong_so=chuong_so) }}">
+                            Chương {{ chuong_so }}
+                        </a>
+                    </li>
+                    {% endfor %}
                 </ul>
              </div>
         
