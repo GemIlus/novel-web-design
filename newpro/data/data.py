@@ -29,15 +29,14 @@ def get_novels_from_url(url):
 
 def save_novel_content(novel_name,url):
     link_chapter = get_chapter_from_url(url)
-    data = ""
+    data = " "
     num=0
     for link in link_chapter:
         num+=1
         print(num,'/',len(link_chapter))
         title, content = get_content_from_url(link)
-        data += title + '\n\n' + content + '\n\n'
-
-        with open('data/'+novel_name + '.txt', 'w', encoding='utf-8') as file:
+        data += title + '\n\n' + content 
+        with open('D:/web/newpro/data/'+novel_name + '.txt', 'w', encoding='utf-8') as file:
             file.write(data)
 
 
@@ -56,11 +55,12 @@ def get_novel_from_hot(url):
 
 
 
-url='https://truyenfull.vn/tien-nghich/'
-# for i in range(0,1229):
-#     url = 'https://truyenfull.vn/danh-sach/truyen-hot/trang-' +str(i)+'.html'
+
+# for i in range(0,2):
+#     url = 'https://truyenfull.vn/danh-sach/truyen-hot/trang-' +str(i)
 #     novels=get_novel_from_hot(url)
 #     for novel in novels:
 #         save_novel_content(novel[0],novel[1])
-
-print(get_chapter_from_url(url))
+url='https://truyenfull.vn/cau-ma/'
+novel_name='Cầu ma'
+print(save_novel_content(novel_name,url))
