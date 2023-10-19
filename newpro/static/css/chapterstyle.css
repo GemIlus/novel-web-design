@@ -1,0 +1,32 @@
+.reading{
+    display: block;
+    width: 1243px; /* A4 width in millimeters */
+    height:max-content ; /* A4 height in millimeters */
+    background-color: white;
+    
+    position: relative;
+    z-index: 7;
+    margin:0 auto;
+    
+}
+.reading h1{
+    text-align: center;
+}
+.reading p{
+    
+}
+.chapter-navigation{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+
+.next-butt{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    background-color: #3e3d43;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+}

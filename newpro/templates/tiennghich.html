@@ -82,7 +82,7 @@
                 <img src="static/img/tiennghichimg.jpg">
                 </a>
                 <button class="read-button">
-                    <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=1, chuong_so= 1) }}" id="reading">
+                    <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=7, chuong_so= 1) }}" id="reading">
                         <h3 id="rea">
                             Đọc
                         </h3>
@@ -116,7 +116,7 @@
                     
                     {% for chuong_so in range(1, 26) %}
                     <li>
-                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=4, chuong_so=chuong_so) }}">
+                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=7, chuong_so=chuong_so) }}">
                             Chương {{ chuong_so }}
                         </a>
                     </li>
@@ -129,3 +129,17 @@
         
     
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="fcontainer">
+                <div class="col-md-3"><img src="/static/img/logo2.png" height="60"></div>
+                <div class="footer-right col-md-9">
+                    © 2023 Hư Thiên Thư Viện -  Chính sách<br>
+                    Hư Thiên Thư Viện là sân chơi mở và free cho cộng đồng fan kiếm hiệp, tiên hiệp, ngôn tình.
+                    Chúc các bạn có những giây phút thư giãn thoải mái sau giờ làm việc và học tập căng thẳng.
+                </div>
+            </div>
+        </div>
+</footer>
+</body>
+</html>

@@ -19,23 +19,32 @@ def catalog():
 def tienhiep():
     # Add any logic if needed
     return render_template('tienhiep.html')
-@main_bp.route('/truyen/<int:truyen_id>/chuong/<int:chuong_so>')
+def get_chapter_info(truyen_id, chuong_so):
+    chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
+
+    if chuong:
+        chuong_content = chuong.Chuong_noidung
+        prev_chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so - 1).first()
+        next_chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so + 1).first()
+        truyen = Truyen.query.filter_by(Truyen_id=truyen_id).first()
+
+        return truyen, chuong_content, prev_chuong, next_chuong
+    else:
+        return None, "Chapter not found", None, None
+
+@main_bp.route('/tien-nghich/<int:truyen_id>/chuong/<int:chuong_so>')
 def tien_nghich_chuong(truyen_id, chuong_so):
-    def get_chuong_content(truyen_id, chuong_so):
+    truyen, chuong_content, prev_chuong, next_chuong = get_chapter_info(truyen_id, chuong_so)
+    chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
+    return render_template('tien_nghich_chuong.html', truyen=truyen,chuong=chuong, chuong_content=chuong_content, prev_chuong=prev_chuong, next_chuong=next_chuong)
+
+@main_bp.route('/cau-ma/<int:truyen_id>/chuong/<int:chuong_so>')
+def cau_ma_chuong(truyen_id, chuong_so):
     
-        chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
+    truyen, chuong_content, prev_chuong, next_chuong = get_chapter_info(truyen_id, chuong_so)
+    chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
+    return render_template('cau_ma_chuong.html', truyen=truyen,chuong=chuong, chuong_content=chuong_content, prev_chuong=prev_chuong, next_chuong=next_chuong)
 
-        # Check if the chapter exists
-        if chuong:
-            return chuong.Chuong_noidung
-        else:
-            return "Chapter not found" 
-
-    # Assuming you have a method to retrieve chapter content by truyen_id and chuong_so
-    chuong_content = get_chuong_content(truyen_id, chuong_so)
-
-    # Render the template with the chapter content
-    return render_template('tien_nghich_chuong.html', chuong_content=chuong_content)
 @main_bp.route('/huyenhuyen')
 def huyenhuyen():
     # Add any logic if needed
@@ -57,7 +66,7 @@ def rank():
 
 @main_bp.route('/tiennghich')
 def tiennghich():
-    truyen = Truyen.query.get(1)  # Thay 1 bằng Truyen_id mong muốn
+    truyen = Truyen.query.get(7)  # Thay 1 bằng Truyen_id mong muốn
 
     if not truyen:
         return "Truyen not found", 404
@@ -66,23 +75,18 @@ def tiennghich():
 
     return render_template('tiennghich.html', truyen=truyen, chuong_list=chuong_list)
 
+@main_bp.route('/cauma')
+def cauma():
+    truyen = Truyen.query.get(1)  # Thay 1 bằng Truyen_id mong muốn
+
+    if not truyen:
+        return "Truyen not found", 404
+
+    chuong_list = Chuong.query.filter_by(truyen_id=truyen.Truyen_id).order_by(asc(Chuong.Chuong_so)).all()
+
+    return render_template('cauma.html', truyen=truyen, chuong_list=chuong_list)
+
 @main_bp.route('/phamnhantutien')
 def phamnhantutien():
     return render_template('phamnhantutien.html')
-@main_bp.route('/truyen/<int:truyen_id>/chuong/<int:chuong_so>')
-def view_chuong(truyen_id, chuong_so):
-    def get_chuong_content(truyen_id, chuong_so):
-    # Assuming you have a model for Chuong and a corresponding column for content
-        chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
-
-    # Check if the chapter exists
-        if chuong:
-            return chuong.Chuong_noidung
-        else:
-            return "Chapter not found" 
-    # Assuming you have a method to retrieve chapter content by truyen_id and chuong_so
-    chuong_content = get_chuong_content(truyen_id, chuong_so)
-
-    # Render the template with the chapter content
-    return render_template('chuong.html', chuong_content=chuong_content)
 

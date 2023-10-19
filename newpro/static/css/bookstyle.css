@@ -111,8 +111,16 @@ div {
     background: #fff;
     height: 300px;
     margin-left: 50px;
+    overflow: hidden;
 }
-
+.book-information img{
+    overflow: hidden;
+    transition: 1s;
+}
+.book-information img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
 .cf {
     zoom: 1;
 }
@@ -217,12 +225,13 @@ img {
 }
 
 #reading{
-    position: relative;
+    position:relative;
     text-decoration: none;
     color: white;
     color:#b5b5b5;
     width: 100%;
     height: 100%;
+    z-index: 1;
     
 
 }

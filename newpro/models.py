@@ -38,13 +38,15 @@ class Chuong(db.Model):
     Chuong_ten= db.Column(db.String(1000))
     _Chuong_noidung = db.Column(db.Text)
     Chuong_noidung = db.column_property(_Chuong_noidung)
+    Chuong_tieude = db.Column(db.String(100))
     truyen_id = db.Column(db.Integer, db.ForeignKey('truyen.Truyen_id'), nullable=False)
 
-    def __init__(self, truyen_id, Chuong_so,Chuong_ten,Chuong_noidung):
+    def __init__(self, truyen_id, Chuong_so,Chuong_ten,Chuong_noidung,Chuong_tieude):
         self.Chuong_so=Chuong_so
         self.Chuong_noidung=Chuong_noidung
         self.Chuong_ten=Chuong_ten
         self.truyen_id = truyen_id
+        self.Chuong_tieude=Chuong_tieude
 
 # class FollowedTruyen(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)

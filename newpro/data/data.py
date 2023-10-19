@@ -10,7 +10,7 @@ def get_content_from_url(url):
     content = soup.find('div', class_='chapter-c').text  # Update the selector
     return title, content
 
-# Lấy danh sách chương
+# # Lấy danh sách chương
 def get_chapter_from_url(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
@@ -18,7 +18,7 @@ def get_chapter_from_url(url):
     links = [item['href'] for item in links_list]
     return links
 
-# Lấy danh sách truyện
+# # Lấy danh sách truyện
 def get_novels_from_url(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
@@ -61,6 +61,10 @@ def get_novel_from_hot(url):
 #     novels=get_novel_from_hot(url)
 #     for novel in novels:
 #         save_novel_content(novel[0],novel[1])
-url='https://truyenfull.vn/cau-ma/'
-novel_name='Cầu ma'
+
+
+
+
+url='https://truyenfull.vn/tien-nghich/'
+novel_name='Tiên Nghịch'
 print(save_novel_content(novel_name,url))

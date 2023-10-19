@@ -62,25 +62,25 @@
                 </li>
                 <li>/</li>
                     
-                <li><a href="{{ url_for('main.tiennghich') }}">{{truyen.Truyen_ten}}</a></li>
+                <li><a href="{{ url_for('main.cauma') }}"> {{truyen.Truyen_ten}} </a></li>
             </ul>
         </div>
     </div>
     <div class="reading" id="content">
     <h1>{{truyen.Truyen_ten}}</h1>
-    <h2>
-        chương {{ chuong.Chuong_so }}
+                    <h2>
+                        Chương {{ chuong.Chuong_tieude }} 
 
-    </h2>
+                    </h2>
     <div class="chapter-navigation">
         {% if prev_chuong %}
-            <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=7, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
+            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
                 <i class="fa-solid fa-backward-step"></i>
             </a>
         {% endif %}
         
         {% if next_chuong %}
-            <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=7, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
+            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
                 <i class="fa-solid fa-forward-step" ></i>
             </a>
         {% endif %}
