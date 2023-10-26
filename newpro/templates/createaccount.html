@@ -35,8 +35,23 @@
                     <a href="{{ url_for('main.index') }}">Home</a>
                 </li>
                 <li class="nav-li">
-                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                    
+                        <div class="catalog-drop" >
+                            <span>Thể loại<i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></span>
+                            
+                            <div class="catalog-drop-content">
+                                <a href="{{url_for('main.tienhiep')}}">Tiên hiệp</a>
+                                <a href="{{url_for('main.linhdi')}}">Linh dị</a>
+                                <a href="{{url_for('main.huyenhuyen')}}">Huyền huyễn</a>
+                            </div>
+
+
+                            
+                        </div>
+                    
                 </li>
+                
+                
                 
                 <li class="nav-li">
                     <a href="{{ url_for('main.rank') }}">Rank</a>

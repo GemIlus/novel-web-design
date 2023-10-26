@@ -20,7 +20,20 @@
                     <a href="{{ url_for('main.index') }}">Home</a>
                 </li>
                 <li class="nav-li">
-                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                    
+                        <div class="catalog-drop" >
+                            <span>Thể loại<i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></span>
+                            
+                            <div class="catalog-drop-content">
+                                <a href="{{url_for('main.tienhiep')}}">Tiên hiệp</a>
+                                <a href="{{url_for('main.linhdi')}}">Linh dị</a>
+                                <a href="{{url_for('main.huyenhuyen')}}">Huyền huyễn</a>
+                            </div>
+
+
+                            
+                        </div>
+                    
                 </li>
                 
                 <li class="nav-li">
@@ -30,7 +43,9 @@
                 
             {% if user %}
                 <li class="nav-li">
-                    {{ user }}
+                    <a href="{{url_for('main.User')}}">
+                        {{ user }}
+                        </a>
                 </li>
                 <li class="nav-li">
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -86,6 +101,20 @@
         {% endif %}
     </div>
     <p>{{ chuong_content }}</p>
+    <br>
+    <div class="chapter-navigation">
+        {% if prev_chuong %}
+            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
+                <i class="fa-solid fa-backward-step"></i>
+            </a>
+        {% endif %}
+        
+        {% if next_chuong %}
+            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
+                <i class="fa-solid fa-forward-step" ></i>
+            </a>
+        {% endif %}
+    </div>
     </div>
     <br>
     

@@ -22,7 +22,20 @@
                     <a href="{{ url_for('main.index') }}">Home</a>
                 </li>
                 <li class="nav-li">
-                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                    
+                        <div class="catalog-drop" >
+                            <span>Thể loại<i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></span>
+                            
+                            <div class="catalog-drop-content">
+                                <a href="{{url_for('main.tienhiep')}}">Tiên hiệp</a>
+                                <a href="{{url_for('main.linhdi')}}">Linh dị</a>
+                                <a href="{{url_for('main.huyenhuyen')}}">Huyền huyễn</a>
+                            </div>
+
+
+                            
+                        </div>
+                    
                 </li>
                 
                 <li class="nav-li">
@@ -32,7 +45,9 @@
                 
             {% if user %}
                 <li class="nav-li">
-                    {{ user }}
+                    <a href="{{url_for('main.User')}}">
+                        {{ user }}
+                        </a>
                 </li>
                 <li class="nav-li">
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -112,19 +127,46 @@
             </div>
         </div>    
         <hr>
-            <div class="chapter-list-wrap">
-                <h2 class="chapter-list-title">Danh sách chương</h2>
-                <ul class="chapter-list">
-                    
-                    {% for chuong_so in range(1, 26) %}
-                    <li>
-                        <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=chuong_so) }}">
-                            Chương {{ chuong_so }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-             </div>
+        <div class="chapter-list-wrap">
+            <h2 class="chapter-list-title">Danh sách chương</h2>
+            
+            <div class="row">
+                
+                <div class="column">
+                    <ul class="chapter-list">
+                        {% for chuong in chuong_list[:495] %}
+                            <li>
+                                <a href="{{ url_for('main.cau_ma_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
+                                    Chương {{ chuong.Chuong_tieude }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul class="chapter-list">
+                        {% for chuong in chuong_list[495:990] %}
+                            <li>
+                                <a href="{{ url_for('main.cau_ma_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
+                                    Chương {{ chuong.Chuong_tieude }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul class="chapter-list">
+                        {% for chuong in chuong_list[990:1485] %}
+                            <li>
+                                <a href="{{ url_for('main.cau_ma_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
+                                    Chương  {{ chuong.Chuong_tieude }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
         
         
         

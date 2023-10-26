@@ -2,23 +2,21 @@ from flask import Flask, render_template, request, redirect, url_for ,session ,f
 from os import path
 import os
 from flask_sqlalchemy import SQLAlchemy 
-from .models import db, Truyen, Chuong
+from .models import db, Truyen, Chuong, ReadingHistory, User,FollowedTruyen
 from sqlalchemy import asc
+from flask_login import current_user,login_required
+from datetime import datetime  
+
 main_bp = Blueprint('main', __name__)
 
-@main_bp.route('/')
-def index():
-    user= session.get('user')
-    return render_template('index.html', user=user)
-@main_bp.route('/catalog')
-def catalog():
-    # Add any logic if needed
-    return render_template('catalog.html')
 
-@main_bp.route('/tienhiep')
-def tienhiep():
-    # Add any logic if needed
-    return render_template('tienhiep.html')
+def get_current_user():
+    user_id = session.get('user_id')
+
+    if user_id:
+        return User.query.get(user_id)
+
+    return None
 def get_chapter_info(truyen_id, chuong_so):
     chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
 
@@ -32,18 +30,79 @@ def get_chapter_info(truyen_id, chuong_so):
     else:
         return None, "Chapter not found", None, None
 
+@main_bp.route('/')
+def index():
+    user= session.get('user')
+    
+    return render_template('index.html',user=user)
+@main_bp.route('/catalog')
+def catalog():
+    # Add any logic if needed
+    return render_template('catalog.html')
+
+@main_bp.route('/tienhiep')
+def tienhiep():
+    # Add any logic if needed
+    return render_template('tienhiep.html')
+
+@main_bp.route('/read_story/<int:truyen_id>/<int:chuong_id>', methods=['GET', 'POST'])
+@login_required
+def read_story(truyen_id, chuong_id):
+    
+    if request.method == 'POST':
+            # Record reading history
+        reading_history = ReadingHistory(
+            user_id=current_user.id,
+            truyen_id=truyen_id,
+            chuong_id=chuong_id
+            )
+        reading_history=request.form['truyen_history']
+        db.session.add(reading_history)
+        db.session.commit()
+
+        # Retrieve and display the chapter
+    
+    user = session.get('user')
+    return render_template('User.html',user=user)
+
+@main_bp.route('/update_reading_history/<int:history_id>', methods=['POST'])
+@login_required
+def update_reading_history(history_id):
+    history = ReadingHistory.query.get(history_id)
+
+    if history and history.user_id == current_user.id:
+        # Handle logic for marking the chapter as read
+        # For example, update a 'read' field in the ReadingHistory model
+        history.read = True
+        db.session.commit()
+
+        flash('Chapter marked as read!', 'success')
+    else:
+        flash('Invalid request!', 'danger')
+
+    return redirect(url_for('main.User'))
+@main_bp.route('/User_history')
+@login_required
+def User_history():
+    User_reading_history=current_user.reading_history.order_by(ReadingHistory.timestamp.desc()).all()
+
+    return render_template('User.html',User_reading_history=User_reading_history)
+
 @main_bp.route('/tien-nghich/<int:truyen_id>/chuong/<int:chuong_so>')
 def tien_nghich_chuong(truyen_id, chuong_so):
     truyen, chuong_content, prev_chuong, next_chuong = get_chapter_info(truyen_id, chuong_so)
     chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
-    return render_template('tien_nghich_chuong.html', truyen=truyen,chuong=chuong, chuong_content=chuong_content, prev_chuong=prev_chuong, next_chuong=next_chuong)
+    user= session.get('user')
+    
+    return render_template('tien_nghich_chuong.html', truyen=truyen,chuong=chuong, chuong_content=chuong_content, prev_chuong=prev_chuong, next_chuong=next_chuong, user=user)
 
 @main_bp.route('/cau-ma/<int:truyen_id>/chuong/<int:chuong_so>')
 def cau_ma_chuong(truyen_id, chuong_so):
     
     truyen, chuong_content, prev_chuong, next_chuong = get_chapter_info(truyen_id, chuong_so)
     chuong = Chuong.query.filter_by(truyen_id=truyen_id, Chuong_so=chuong_so).first()
-    return render_template('cau_ma_chuong.html', truyen=truyen,chuong=chuong, chuong_content=chuong_content, prev_chuong=prev_chuong, next_chuong=next_chuong)
+    user= session.get('user')
+    return render_template('cau_ma_chuong.html', truyen=truyen,chuong=chuong, chuong_content=chuong_content, prev_chuong=prev_chuong, next_chuong=next_chuong, user=user)
 
 @main_bp.route('/huyenhuyen')
 def huyenhuyen():
@@ -66,27 +125,57 @@ def rank():
 
 @main_bp.route('/tiennghich')
 def tiennghich():
-    truyen = Truyen.query.get(7)  # Thay 1 bằng Truyen_id mong muốn
+    
+    truyen = Truyen.query.get(9)  # Thay 1 bằng Truyen_id mong muốn
 
     if not truyen:
         return "Truyen not found", 404
 
     chuong_list = Chuong.query.filter_by(truyen_id=truyen.Truyen_id).order_by(asc(Chuong.Chuong_so)).all()
-
-    return render_template('tiennghich.html', truyen=truyen, chuong_list=chuong_list)
+    user= session.get('user')
+    return render_template('tiennghich.html', truyen=truyen, chuong_list=chuong_list,user=user)
 
 @main_bp.route('/cauma')
 def cauma():
     truyen = Truyen.query.get(1)  # Thay 1 bằng Truyen_id mong muốn
+    
+    
 
     if not truyen:
         return "Truyen not found", 404
 
     chuong_list = Chuong.query.filter_by(truyen_id=truyen.Truyen_id).order_by(asc(Chuong.Chuong_so)).all()
-
-    return render_template('cauma.html', truyen=truyen, chuong_list=chuong_list)
+    user= session.get('user')
+    return render_template('cauma.html', truyen=truyen ,chuong_list=chuong_list,user=user)
 
 @main_bp.route('/phamnhantutien')
 def phamnhantutien():
     return render_template('phamnhantutien.html')
 
+@main_bp.route('/User')
+def User():
+
+    user= session.get('user')
+    return render_template('User.html',user=user)
+
+#followed truyen
+
+@main_bp.route('/follow_truyen/<int:truyen_id>', methods=['POST'])
+@login_required
+def follow_truyen(truyen_id):
+    truyen = Truyen.query.get(truyen_id)
+    if truyen:
+        current_user.followed_truyens.append(FollowedTruyen(truyen=truyen))
+        db.session.commit()
+    return redirect(url_for('main.tiennghich', truyen_id=truyen_id))
+
+@main_bp.route('/unfollow_truyen/<int:truyen_id>', methods=['POST'])
+@login_required
+def unfollow_truyen(truyen_id):
+    truyen = Truyen.query.get(truyen_id)
+    if truyen:
+        followed_truyen = FollowedTruyen.query.filter_by(user=current_user, truyen=truyen).first()
+        if followed_truyen:
+            db.session.delete(followed_truyen)
+            db.session.commit()
+    return redirect(url_for('main.tiennghich', truyen_id=truyen_id))

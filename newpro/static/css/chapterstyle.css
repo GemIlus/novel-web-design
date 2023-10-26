@@ -11,10 +11,10 @@
 }
 .reading h1{
     text-align: center;
+    font-size: 30px;
+    height: 40px;
 }
-.reading p{
-    
-}
+
 .chapter-navigation{
     display: flex;
     align-items: stretch;

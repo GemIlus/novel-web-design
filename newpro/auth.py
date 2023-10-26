@@ -1,33 +1,44 @@
-from flask import Flask, render_template, request, redirect, url_for ,session ,flash,get_flashed_messages,Blueprint
+from flask import Flask, render_template, request, redirect, url_for, session, flash, Blueprint
+from flask_login import login_user, login_required, logout_user
 from newpro.models import User, db
 
-auth= Blueprint('auth', __name__)
+auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['login-username']
         password = request.form['login-password']
-        
+
         # Check if the provided credentials are valid using the database
         user = User.query.filter_by(Username=username, Password=password).first()
         if user:
+            # Use Flask-Login's login_user function to log in the user
+            login_user(user)
+
             # Redirect to the home page or any other page after successful login
             session['user'] = username
             return redirect(url_for('main.index'))
         else:
             flash('Wrong password or username!', 'error')
-            
+
     # Render the login page if it's a GET request or if the login fails
     return render_template('login.html')
 
-#log-out
+# Log out
 @auth.route('/logout')
+@login_required  # Ensure that only logged-in users can access this route
 def logout():
+    # Use Flask-Login's logout_user function to log out the user
+    logout_user()
+
+    # Clear the 'user' session variable
     session.pop('user', None)
+
+    # Redirect to the home page or any other page after logout
     return redirect(url_for('main.index'))
 
-#create-account
+# Create account
 @auth.route('/createaccount', methods=['GET', 'POST'])
 def createaccount():
     if request.method == 'POST':

@@ -23,7 +23,7 @@ def split_chapters(input_file_path, output_folder):
 
 if __name__ == "__main__":
     # Thay đổi đường dẫn file đầu vào và thư mục đầu ra theo nhu cầu của bạn
-    input_file_path = 'D:/web/newpro/data/Cầu ma.txt'
-    output_folder = 'D:/web/newpro/data/Cầu ma'
+    input_file_path = 'D:/web/newpro/data/Tiên_Nghịch.txt'
+    output_folder = 'D:/web/newpro/data/Tiên Nghịch'
 
     split_chapters(input_file_path, output_folder)

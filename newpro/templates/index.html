@@ -34,7 +34,20 @@
                     <a href="{{ url_for('main.index') }}">Home</a>
                 </li>
                 <li class="nav-li">
-                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                    
+                        <div class="catalog-drop" >
+                            <span>Thể loại<i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></span>
+                            
+                            <div class="catalog-drop-content">
+                                <a href="{{url_for('main.tienhiep')}}">Tiên hiệp</a>
+                                <a href="{{url_for('main.linhdi')}}">Linh dị</a>
+                                <a href="{{url_for('main.huyenhuyen')}}">Huyền huyễn</a>
+                            </div>
+
+
+                            
+                        </div>
+                    
                 </li>
                 
                 <li class="nav-li">
@@ -44,7 +57,9 @@
                 
             {% if user %}
                 <li class="nav-li">
+                    <a href="{{url_for('main.User')}}">
                     {{ user }}
+                    </a>
                 </li>
                 <li class="nav-li">
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -73,91 +88,236 @@
     <div class='container'style="background-image: url(static/img/thuymac3.png)">
         
         <div class="pages" style="background-image: url(static/img/logo11.png);background-size: cover; background-position: center;">
-        <br>
-        <h2 style="color:#3e3d43; ">--ĐỀ XUẤT--</h2>
-        <table class="catalog">
-            <tr class="image_novel" >
-                <th>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                    <img src="static/img/tiennghichimg.jpg" style="height: 240px; width:160px;" alt="tiennghich">
-                </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('main.phamnhantutien') }}" >
-            <!-- Repeat the above book section for each book in your catalog -->
-                    <img src="static/img/phamnhantutien.jpg" alt="phamnhantutien">
-                    </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                    <img src="static/img/gia-thien.jpg" style="height: 240px; width:160px ;" alt="giathien">
-                    </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('main.cauma') }}" >
-                    <img src="static/img/cau-ma-1.jpg" style="height: 240px; width:160px ;" alt="cauma">
-                    </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                    <img src="static/img/nhat-niem-vinh-hang.jpg" style="height: 240px; width:160px ;" alt="nhatniemvinhhang">
-                    </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                    <img src="static/img/linh-vu-thien-ha.jpg" style="height: 240px; width:160px ;" alt="nhatniemvinhhang">
-                    </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                    <img src="static/img/the-gioi-hoan-my.jpeg" style="height: 240px; width:160px ;" alt="nhatniemvinhhang">
-                    </a>
-                </th>
-            </tr>
-            <tr class="name_novel">
-                <td>
-                <a href="{{ url_for('main.tiennghich') }}" >
-                    <h3>Tiên nghịch</h3>
-                    </a> 
-                </td>
-                <td>
-                <a href="{{ url_for('main.phamnhantutien') }}" >
-                    <h3>Phàm Nhân Tu Tiên</h3>
-                    </a>
-                </td>
-                <td>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                        <h3>Già thiên</h3>
-                    </a> 
-                </td>
-                <td>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                        <h3>Cầu ma</h3>
-                    </a> 
-                </td>
-                <td>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                        <h3>Nhất niệm vĩnh hằng</h3>
-                    </a> 
-                </td>
-                <td>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                        <h3>Linh vũ thiên hạ</h3>
-                    </a> 
-                </td>
-                <td>
-                    <a href="{{ url_for('main.tiennghich') }}" >
-                        <h3>Thế giới hoàn mỹ</h3>
-                    </a> 
-                </td>
-            </tr>
-        </table>
-        <br>
-       
+
+        <div class="viet_author_box2"  >
+            
+            <div class="container-viet-author2" style=" padding-bottom:10px ; padding-top: 15px; padding-left: 20px;">
+                
+                <div class="column-tray-item"  >
+                    <div class="tray-author" style="background-image: url(static/img/logo12.png);background-size: cover; background-position: center;">
+                        <h2>Theo dõi</h2>
+                        <hr>
+                        <ol>
+                            
+                            <li>
+                                <div class="inline-container">
+                                    <img src="static/img/tiennghichimg.jpg" alt="tiennghich">
+                                    <a href="{{ url_for('main.tiennghich') }}">
+                                    <span class="inline_novel_name">Tiên nghịch- Nhĩ Căn</span>
+                                    </a>
+                                  </div>
+                            </li>
+                            <li>
+                                <div class="inline-container">
+                                    <img src="static/img/tiennghichimg.jpg" alt="tiennghich">
+                                    <a href="{{ url_for('main.tiennghich') }}">
+                                    <span class="inline_novel_name">Tiên nghịch- Nhĩ Căn</span>
+                                    </a>
+                                  </div>
+                            </li>
+                            <li>
+                                <div class="inline-container">
+                                    <img src="static/img/tiennghichimg.jpg" alt="tiennghich">
+                                    <a href="{{ url_for('main.tiennghich') }}">
+                                    <span class="inline_novel_name">Tiên nghịch- Nhĩ Căn</span>
+                                    </a>
+                                  </div>
+                            </li>
+                            <li>
+                                <div class="inline-container">
+                                    <img src="static/img/muc.jpg" alt="tiennghich">
+                                    <a href="{{ url_for('main.tiennghich') }}">
+                                    <span class="inline_novel_name">Ái Tiềm Thủy Đích Ô Tặc</span>
+                                    </a>
+                                </div>
+                                
+                            </li>
+                        </ol>
+                    </div>
+                    
+                </div>
+
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                      <div class="numbertext"></div>
+                      <img src="static/img/logo7.png" style="width:630px;height: 352.4px;">
+                      
+                    </div>
+                  
+                    <div class="mySlides fade">
+                      <div class="numbertext"></div>
+                      <img src="static/img/pham-nhan-tu-tien.jpg" style="width:630px;height: 352.4px;">
+                      
+                    </div>
+                  
+                    <div class="mySlides fade">
+                      <div class="numbertext"></div>
+                      <img src="static/img/gia-thien-3.jpg" style="width:630px;height: 352.4px;">
+                      
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext"></div>
+                        <img src="static/img/tien-nghich-5.jpg" style="width:630px;height: 352.4px;">
+                        
+                      </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                  </div>
+                  <br>
+                  
+                  <!-- The dots/circles -->
+                  
+                  <script>
+                    let slideIndex = 0; // Start with the first slide
+                    showSlides();
+                
+                    // Auto-rolling function
+                    function autoRoll() {
+                        plusSlides(1); // Increment slide index to move to the next slide
+                        showSlides();
+                    }
+                
+                    // Set interval for auto-rolling (change the duration as needed)
+                    setInterval(autoRoll, 5000); // Auto roll every 3 seconds (adjust as needed)
+                
+                    // Next/previous controls
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+                
+                    // Thumbnail image controls
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+                
+                    function showSlides() {
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
+                        if (slideIndex >= slides.length) { slideIndex = 0 } // Reset to the first slide
+                        if (slideIndex < 0) { slideIndex = slides.length - 1 } // Wrap to the last slide
+                
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                
+                        slides[slideIndex].style.display = "block";
+                    }
+                </script>
+                
+            
+            <div class="column-tray-item-3">
+                <div class="tray-author" >
+                    <h2>Tin tức</h2>
+                    <hr>
+                    <ol>
+                        
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Nhĩ Căn</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Thần Đông</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Vong Ngữ</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Ái Tiềm Thủy Đích Ô Tặc</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Ái Tiềm Thủy Đích Ô Tặc</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Ái Tiềm Thủy Đích Ô Tặc</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Ái Tiềm Thủy Đích Ô Tặc</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="inline-container">
+                                
+                                <a href="{{ url_for('main.tiennghich') }}">
+                                <span class="inline_novel_name">Ái Tiềm Thủy Đích Ô Tặc</span>
+                                </a>
+                            </div>
+                            
+                        </li>
+                    </ol>
+                </div>
+            </div>   
+            <div class="small-nav">
+                <div class='small-nav-list'>
+                    <ul>
+                        <li class="nav-li">
+                            <a style="cursor: pointer;" onclick="currentSlide(1)">Hư thiên</a>
+                            
+                        </li>
+                        <li class="nav-li">
+                            <a style="cursor: pointer;" onclick="currentSlide(2)">Phàm nhân tu tiên</a>
+                        </li>
+                        <li class="nav-li">
+                            <a style="cursor: pointer;" onclick="currentSlide(3)">Già thiên</a>
+                        </li>
+                        <li class="nav-li">
+                            <a style="cursor: pointer;" onclick="currentSlide(4)">Tiên nghịch</a>
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+        </div>           
+    <div>
+    </div>
+    </div>
 
         <!------------------------------ danh sach novel--------------------------------- -->
         <div class="section1" style="background-image: url(static/img/logo11.png);background-size: cover; background-position: center;">
-            <h2 style="color:#3e3d43"><i class="fa-solid fa-heart" style="color: #707bfc;"></i> Yêu thích</h2>
+            <h2 style="color:#3e3d43"><i class="fa-solid fa-heart" style="color: #707bfc;"></i> Đề xuất</h2>
 
             <ol>
                 <li>
@@ -342,7 +502,7 @@
             <div class="content-container">
                 
             <h2 class="complete">
-                <i class="fa-solid fa-book-open" style="color:#707bfc"></i>_Đã Hoàn Thành</h2>
+                <i class="fa-solid fa-book-open" style="color:#707bfc;margin-right: 5px;"></i>Đã Hoàn Thành</h2>
             <a class="more" href="{{url_for('main.author')}}"> &#8594;	xem tất cả</a>
             </div>
             <br>
@@ -360,7 +520,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="tray-item">
+                <div class="tray-item" style="height: 110px;">
                     <a href="{{url_for('main.tiennghich')}}">
                         <img src="static/img/the-gioi-hoan-my2.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
                         <div class="tray_content">
@@ -373,7 +533,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="tray-item">
+                <div class="tray-item" style="height: 110px;">
                     <a href="{{url_for('main.tiennghich')}}">
                         <img src="static/img/dau-la.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
                         <div class="tray_content">
@@ -386,7 +546,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="tray-item">
+                <div class="tray-item" style="height: 110px;">
                     <a href="{{url_for('main.tiennghich')}}">
                         <img src="static/img/linh-vu-thien-ha-1.jpg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
                         <div class="tray_content">
@@ -399,7 +559,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="tray-item">
+                <div class="tray-item" style="height: 110px;">
                     <a href="{{url_for('main.tiennghich')}}">
                         <img src="static/img/nhat-niem-vinh-hang-2.jpeg" style="height: 110px; width: 160px;border: 0; vertical-align: middle;" alt="tien_nghich">
                         <div class="tray_content">

@@ -22,8 +22,23 @@
                     <a href="{{ url_for('main.index') }}">Home</a>
                 </li>
                 <li class="nav-li">
-                    <a href="{{ url_for('main.catalog') }}">Thể Loại</a> 
+                    
+                        <div class="catalog-drop" >
+                            <span>Thể loại<i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></span>
+                            
+                            <div class="catalog-drop-content">
+                                <a href="{{url_for('main.tienhiep')}}">Tiên hiệp</a>
+                                <a href="{{url_for('main.linhdi')}}">Linh dị</a>
+                                <a href="{{url_for('main.huyenhuyen')}}">Huyền huyễn</a>
+                            </div>
+
+
+                            
+                        </div>
+                    
                 </li>
+                
+                
                 
                 <li class="nav-li">
                     <a href="{{ url_for('main.rank') }}">Rank</a>
@@ -32,7 +47,9 @@
                 
             {% if user %}
                 <li class="nav-li">
-                    {{ user }}
+                    <a href="{{url_for('main.User')}}">
+                        {{ user }}
+                        </a>
                 </li>
                 <li class="nav-li">
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -95,7 +112,18 @@
                     <a href="{{url_for('main.author')}}" class="blue">Nhĩ Căn</a>
                                 <span class="blue">Đã hoàn thành</span>
                                             <a href="{{url_for('main.tienhiep')}}" class="red" target="_blank" data-eid="qd_G10">Tiên Hiệp</a>
-                        
+                                            
+                                            {% if current_user.is_authenticated %}
+                                            {% if truyen not in current_user.followed_truyens %}
+                                              <form action="{{ url_for('main.follow_truyen', truyen_id=truyen.Truyen_id) }}" method="post">
+                                                <button type="submit">Follow</button>
+                                              </form>
+                                            {% else %}
+                                              <form action="{{ url_for('main.unfollow_truyen', truyen_id=truyen.Truyen_id) }}" method="post">
+                                                <button type="submit">Unfollow</button>
+                                              </form>
+                                            {% endif %}
+                                          {% endif %}    
                 </p>
                 
                 <p class="intro">Tiên Nghịch là câu chuyện Tiên Hiệp kể về Vương Lâm - một...</t></p>
@@ -114,15 +142,43 @@
                 <h2 class="chapter-list-title">Danh sách chương</h2>
                 <ul class="chapter-list">
                     
-                    {% for chuong_so in range(1, 26) %}
-                    <li>
-                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=7, chuong_so=chuong_so) }}">
-                            Chương {{ chuong_so }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-             </div>
+                    <div class="row">
+                
+                        <div class="column">
+                            <ul class="chapter-list">
+                                {% for chuong in chuong_list[:685] %}
+                                    <li>
+                                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
+                                            Chương {{ chuong.Chuong_tieude }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <ul class="chapter-list">
+                                {% for chuong in chuong_list[685:1317] %}
+                                    <li>
+                                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
+                                            Chương {{ chuong.Chuong_tieude }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <ul class="chapter-list">
+                                {% for chuong in chuong_list[1317:1975] %}
+                                    <li>
+                                        <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
+                                            Chương  {{ chuong.Chuong_tieude }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
         
         
         

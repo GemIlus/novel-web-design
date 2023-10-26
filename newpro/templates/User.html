@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hư Thiên Thư Viện</title>
+        <link rel="icon" type="image/x-icon" href="static/img/logo2.png">
+
+        <link rel="stylesheet" href="static/css/style.css"> <!-- You can create a separate CSS file for styling -->
+        <link rel="stylesheet" href="static/css/User.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+<!-- ... (head and other parts remain unchanged) -->
+
+<body>
+
+    <!-- Navigation bar -->
+
+    <!-- Header container -->
+    <header style="background-image: url(static/img/logo8.png);">
+        <!-- Logo -->
+        <a href="{{ url_for('main.index') }}" id="logo">
+            <img src="static/img/logo2.png" alt="Hư Thiên Thư Viện Logo">
+        </a>
+
+        <!-- Search bar -->
+        
+    </header>
+
+    <!-- Navigation bar -->
+    <div class="box_nav">
+        <div class='nav'>
+            <ul>
+                <li class="nav-li">
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                </li>
+                <li class="nav-li">
+                    
+                        <div class="catalog-drop" >
+                            <span>Thể loại<i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></span>
+                            
+                            <div class="catalog-drop-content">
+                                <a href="{{url_for('main.tienhiep')}}">Tiên hiệp</a>
+                                <a href="{{url_for('main.linhdi')}}">Linh dị</a>
+                                <a href="{{url_for('main.huyenhuyen')}}">Huyền huyễn</a>
+                            </div>
+
+
+                            
+                        </div>
+                    
+                </li>
+                
+                <li class="nav-li">
+                    <a href="{{ url_for('main.rank') }}">Rank</a>
+                </li>
+                <!-- Add similar links for other pages -->
+                
+                {% if user %}
+                <li class="nav-li">
+                    <a href="{{url_for('main.User')}}">
+                    {{ user }}
+                    </a>
+                </li>
+                <li class="nav-li">
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                </li>
+                
+            {% else %}
+                <li class="nav-li">
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                    
+                </li>
+                
+            {% endif %}
+            </ul>
+        </div>
+        <div class="search">
+                    <form action="" id="search-box">
+                        <input type="text" id="search-text" placeholder="Đạo hữu tìm gì..." required>
+                        <button id='search-btn'><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+        </div>
+    </div>
+
+    <div class='container'style="background-image: url(static/img/logo15.webp)">
+        <div class="pages" style="background-image: url(static/img/logo11.png);background-size: cover; background-position: center;">
+            
+            <div class="background-ava" style="background-image: url(static/img/logo7.png);border-bottom: 1px solid;">
+                <div class="avatar">
+                    <img src="static/img/nhi-can.jpg" class="img-thumbnail">
+                </div>
+                <div class="username">
+                {% if user %}    
+                  <h3 >{{ user }} <i class="fa-solid fa-pen fa-2xs" ></i></h3>
+                {% else %}
+                {% endif %}
+                    <div class="user-type">
+                        user
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container-user">
+                <div class="side-bar">
+                <ul>
+                    <li>
+                        <h3>
+                            <a href="{{url_for('main.User')}}">
+                            Tài khoản 
+                        
+                            </a>
+                        </h3>
+                    </li>
+                    <li>
+                        <h3>
+                            <a href="{{url_for('main.User')}}">
+                            Truyện theo dõi
+                        
+                            </a>
+                        </h3>
+                    </li>
+                    <li>
+                        <h3>
+                            <a href="{{url_for('main.User')}}">
+                            Đăng truyện
+                        
+                            </a>
+                        </h3>
+                    </li>
+                    <li>
+                        <h3>
+                            <a href="{{url_for('main.User')}}">
+                            Ủng hộ
+                        
+                            </a>
+                        </h3>
+                    </li>
+                </ul>
+                </div>
+                
+                <div class="container-user-fl">
+                    <div>
+                        <!-- User.html -->
+                        
+                        {% for history in user_reading_history %}
+                    <li>
+                        {{ history.truyen.Truyen_ten }} - Chapter {{ history.chuong_so }} - Read on {{ history.timestamp }}
+                        <form method="post" action="{{ url_for('main.update_reading_history', history_id=history.id) }}">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+                            <button type="submit">Mark as Read</button>
+                        </form>
+                    </li>
+                        {% endfor %}
+
+
+                    </div>
+
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </div>

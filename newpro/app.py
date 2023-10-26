@@ -2,8 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .models import db
 import os
-from .models import db, Truyen, Chuong
+from .models import db, Truyen, Chuong,User,ReadingHistory
 from datetime import datetime
+from flask_login import LoginManager,UserMixin
+
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +16,12 @@ def create_app():
     # Initialize the database with the Flask app
     db.init_app(app)
 
+    login_manager = LoginManager(app)
+    
+
+    @login_manager.user_loader
+    def load_user(User_id):
+        return User.query.get(int(User_id))
     # Import and register your Blueprints after initializing the app
     from newpro.views import main_bp
     from newpro.auth import auth
@@ -25,6 +33,8 @@ def create_app():
         db.create_all()
 
     return app
+
+
 
 def insert_data_from_folders(data_folder):
 
@@ -65,6 +75,9 @@ def insert_data_from_folders(data_folder):
                                     chapter_info["Chuong_tieude"] = content_lines[0].strip()
                             chuong = Chuong(**chapter_info)
                             db.session.add(chuong)
+                    
+                    
+        
         db.session.commit()
 
 def read_chapter_content(file_path):

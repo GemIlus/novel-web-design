@@ -39,6 +39,7 @@ header {
 } */
 
 /* Logo styling */
+
 #logo {
     max-height: 60px; /* Adjust the max height as needed */
     margin-top:40px
@@ -99,7 +100,7 @@ header {
 }
 /* Navigation bar styling */
 .nav {
-    background-color: #3e3d43;
+    
     color: white;
     padding: 9px;
     float: left;
@@ -146,19 +147,7 @@ header {
     width: 100%;
 }
 /* Add some basic styling for the buttons */
-.nav-li button {
-    background-color: #707bfc;
-    color: white;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
-    text-align: vertical;
-}
 
-.nav-li button:hover {
-    background-color: #606bbd;
-}
 
 .subnav{
     color:aliceblue
@@ -183,8 +172,8 @@ h2{
 }
 .pages{
     display: block;
-    width: 1243px; /* A4 width in millimeters */
-    height: 550mm; /* A4 height in millimeters */
+    width: 1300px; /* A4 width in millimeters */
+    height: 800mm; /* A4 height in millimeters */
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a shadow effect */
     position: relative;
@@ -194,49 +183,10 @@ h2{
     
     
 }
-/* Book Catalog styling */
-.catalog {
-    background-color: white;
-    display: flex;
-    border: 2px solid black;
-    position: relative;
-    justify-content: space-around;
-    border-radius: 10px;
-    width: 95%;
-    margin: 0 auto;
-    z-index: 10;
-    height: 290px;
-}
-
-tbody{
-    margin-top:5px;
-}
-.name_novel td {
-    border:none;
-    text-align: left;
-    background-color: #333;
-    border-radius: 10px;
-}
-.name_novel td h3{
-    color:white;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: small;
-    
-}   
-
-.image_novel img{
-    transition: 1s;
-    overflow: hidden;
-}
-.image_novel img:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
 
 
-.name_novel a{
-    text-decoration: none;
-}
+
+
 
 
 
@@ -495,11 +445,32 @@ footer {
     margin-left:5px;
 }
 .container-viet-author{
-    display: block;
-    margin-left:65px;
-
+    display: flex;
+    margin-left:49px;
+    flex-wrap: wrap;
+}
+.column-tray-item{
+    width:312px ;
+     display: block;
+     margin-left:-60px
 }
 
+.column-tray-item-3{
+    width:272px ;
+    display: block;
+    margin-left: 20px;
+}
+
+
+.tray-name1{
+    font-size: 16px;
+    max-height: 44px;
+    overflow: hidden;
+    margin-bottom: 2px;
+    text-align: center;
+    margin-left:5px;
+    
+}
 .content_container{
    height: 50px;
 }
@@ -510,4 +481,216 @@ footer {
 .tray-item img:hover{
     transform: scale(1.2);
     cursor: pointer;
+}
+
+.container-viet-author2{
+    display: flex;
+    margin-left:23px;
+    flex-wrap: wrap;
+}
+
+    
+
+.viet_author_box2{
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    border: 0px solid;
+    border-radius: 10px;
+    width: 1220px;
+    margin:0 auto;
+}
+
+.small-nav{
+    display: block;
+    width: 632.4px;
+    position: relative;
+    z-index: 1000;
+    top: 0;
+    margin-bottom: 0px;
+    background: #3e3d43;
+    margin-left: 252px;
+    margin-top: 2px;
+    border-radius: 10px;
+    
+}
+.small-nav-list{
+    
+    color: white;
+    padding: 12px;
+    float: left; 
+    width: 837px;
+    
+}
+.small-nav-list ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    width: 60%;
+    margin-left: 48px;
+}
+.small-nav-list a{
+    text-decoration: none;
+    color:white;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+  
+  /* On hover, add a black background color with a little bit see-through */
+
+.fade {
+    animation-name: fade;
+    animation-duration: 3s;
+    box-sizing:border-box
+}
+  
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+    
+  }
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    box-sizing:border-box
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+    box-sizing:border-box
+  }
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    box-sizing:border-box;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+    box-sizing:border-box;
+    border: 1px solid #989696;
+    height: 354.6px;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    box-sizing:border-box;
+    background-color: #777680;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    box-sizing:border-box
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    box-sizing:border-box
+  }
+.catalog-drop{ 
+    position: relative;
+    display: inline-block;
+}
+.catalog-drop-btn{
+    background-color: #3e3d43;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.catalog-drop-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    top: 100%;
+}
+.catalog-drop-content a{
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  
+}
+
+
+.catalog-drop:hover .catalog-drop-content{
+    background-color: #3e3d43;
+    display: block;
+}
+.tray-author{
+    width: 249px;
+    
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top;
+    margin-right:30px ;
+    height: 310px;
+    border:1px solid rgb(191, 186, 186);
+    border-radius: 10px;
+}
+.tray-author ol{
+    display: flex;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    margin-left: 10px;
+}
+.tray-author a{
+    text-decoration:none;
+    color: black;
+}
+.tray-author li{
+    padding-bottom: 6px;
 }

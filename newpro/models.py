@@ -1,19 +1,27 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime  
 from sqlalchemy import asc
+
+from flask_login import UserMixin
+
 db = SQLAlchemy()
 
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     User_id = db.Column(db.Integer, primary_key=True)
     Username = db.Column(db.String(100))
     Password = db.Column(db.String(100))
-    # followed_truyens = db.relationship('Truyen', secondary='followed_truyens', backref=db.backref('followers', lazy=True))
+    reading_history = db.relationship('ReadingHistory', backref='user', lazy='dynamic')
+    followed_truyens = db.relationship('FollowedTruyen', backref='user', lazy='dynamic')
 
     def __init__(self, Username, Password):
         self.Username = Username
         self.Password = Password
+
+    def get_id(self):
+        return str(self.User_id)
+
 
 class Truyen(db.Model):
     Truyen_id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +32,8 @@ class Truyen(db.Model):
     # Truyen_hinhdaidien = db.Column(db.String(100))
     # followed_truyens = db.relationship('FollowedTruyen', backref='Truyen', lazy=True)
     chuoongs = db.relationship('Chuong', backref='truyen', lazy=True)  # Add this line
+    reading_history = db.relationship('ReadingHistory', backref='truyen', lazy=True)
+    followed_users = db.relationship('FollowedTruyen', backref='truyen', lazy=True)
 
     def __init__(self,Truyen_ten):
         # self.Truyen_ma=Truyen_ma
@@ -40,6 +50,7 @@ class Chuong(db.Model):
     Chuong_noidung = db.column_property(_Chuong_noidung)
     Chuong_tieude = db.Column(db.String(100))
     truyen_id = db.Column(db.Integer, db.ForeignKey('truyen.Truyen_id'), nullable=False)
+    reading_history = db.relationship('ReadingHistory', backref='chuong', lazy=True)
 
     def __init__(self, truyen_id, Chuong_so,Chuong_ten,Chuong_noidung,Chuong_tieude):
         self.Chuong_so=Chuong_so
@@ -48,16 +59,25 @@ class Chuong(db.Model):
         self.truyen_id = truyen_id
         self.Chuong_tieude=Chuong_tieude
 
-# class FollowedTruyen(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.User_id'), nullable=False)
-#     truyen_id = db.Column(db.Integer, db.ForeignKey('truyen.Truyen_id'), nullable=False)
-#     followed_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class ReadingHistory(db.Model):
 
+    id = db.Column(db.Integer, primary_key=True)
 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.User_id'), nullable=False)
+    truyen_id = db.Column(db.Integer, db.ForeignKey('truyen.Truyen_id'), nullable=False)
+    chuong_id = db.Column(db.Integer, db.ForeignKey('chuong.Chuong_id'), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    def __repr__(self):
+        return f"<ReadingHistory {self.user_id}, {self.truyen_id}, {self.chuong_id}>"
 
+    
+class FollowedTruyen(db.Model):
+    fl_id=db.Column(db.Integer, primary_key=True)
 
+    user_fl_id=db.Column(db.Integer, db.ForeignKey('user.User_id'), nullable=False)
+    truyen_fl_id = db.Column(db.Integer, db.ForeignKey('truyen.Truyen_id'), nullable=False)
 
     
