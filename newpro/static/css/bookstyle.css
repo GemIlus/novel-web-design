@@ -481,3 +481,10 @@ p {
     clear: both;
     display: table;
 }
+
+#follow-btn{
+    background-color: white;
+    color:#0079C1;
+    border: 1px solid #9fadc9 ;
+    border-radius: 20px;
+}

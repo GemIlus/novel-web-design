@@ -56,7 +56,7 @@ def read_story(truyen_id, chuong_id):
             truyen_id=truyen_id,
             chuong_id=chuong_id
             )
-        reading_history=request.form['truyen_history']
+        reading_history=request.form['history-form']
         db.session.add(reading_history)
         db.session.commit()
 
@@ -150,6 +150,15 @@ def cauma():
 
 @main_bp.route('/phamnhantutien')
 def phamnhantutien():
+    truyen = Truyen.query.get(7)  # Thay 1 bằng Truyen_id mong muốn
+    
+    
+
+    if not truyen:
+        return "Truyen not found", 404
+
+    chuong_list = Chuong.query.filter_by(truyen_id=truyen.Truyen_id).order_by(asc(Chuong.Chuong_so)).all()
+    user= session.get('user')
     return render_template('phamnhantutien.html')
 
 @main_bp.route('/User')
@@ -160,22 +169,26 @@ def User():
 
 #followed truyen
 
-@main_bp.route('/follow_truyen/<int:truyen_id>', methods=['POST'])
+
+
+@main_bp.route('/follow_truyen/<route_name>/<int:truyen_id>', methods=['POST'])
 @login_required
-def follow_truyen(truyen_id):
+def follow_truyen(route_name, truyen_id):
     truyen = Truyen.query.get(truyen_id)
     if truyen:
-        current_user.followed_truyens.append(FollowedTruyen(truyen=truyen))
-        db.session.commit()
-    return redirect(url_for('main.tiennghich', truyen_id=truyen_id))
+        followed_truyen = FollowedTruyen.query.filter_by(user=current_user, truyen=truyen).first()
+        if not followed_truyen:
+            current_user.followed_truyens.append(FollowedTruyen(truyen=truyen, route_name=route_name))
+            db.session.commit()
+    return redirect(url_for(f'main.{route_name}', truyen_id=truyen_id))
 
-@main_bp.route('/unfollow_truyen/<int:truyen_id>', methods=['POST'])
+@main_bp.route('/unfollow_truyen/<route_name>/<int:truyen_id>', methods=['POST'])
 @login_required
-def unfollow_truyen(truyen_id):
+def unfollow_truyen(route_name, truyen_id):
     truyen = Truyen.query.get(truyen_id)
     if truyen:
         followed_truyen = FollowedTruyen.query.filter_by(user=current_user, truyen=truyen).first()
         if followed_truyen:
             db.session.delete(followed_truyen)
             db.session.commit()
-    return redirect(url_for('main.tiennghich', truyen_id=truyen_id))
+    return redirect(url_for(f'main.{route_name}', truyen_id=truyen_id))

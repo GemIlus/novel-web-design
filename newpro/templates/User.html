@@ -142,19 +142,21 @@
                 
                 <div class="container-user-fl">
                     <div>
-                        <!-- User.html -->
+                        <!-- Truyện đã follow sẽ hiện ở đây -->
+                        <h2>Truyện đã follow</h2>
+                        <ul class="fl-table">
+                            {% for followed_truyen in current_user.followed_truyens %}
+                                <li>
+                                    <div class="inline-container">
+                                        <a href="{{ url_for('main.' ~ followed_truyen.route_name, truyen_id=followed_truyen.truyen.Truyen_id) }}">
+                                            {{ followed_truyen.truyen.Truyen_ten }} 
+                                            
+                                        </a>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
                         
-                        {% for history in user_reading_history %}
-                    <li>
-                        {{ history.truyen.Truyen_ten }} - Chapter {{ history.chuong_so }} - Read on {{ history.timestamp }}
-                        <form method="post" action="{{ url_for('main.update_reading_history', history_id=history.id) }}">
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-                            <button type="submit">Mark as Read</button>
-                        </form>
-                    </li>
-                        {% endfor %}
-
-
                     </div>
 
                         

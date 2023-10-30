@@ -111,7 +111,39 @@
                     <a href="{{url_for('main.author')}}" class="blue">Nhĩ Căn</a>
                                 <span class="blue">Đã hoàn thành</span>
                                             <a href="{{url_for('main.tienhiep')}}" class="red" target="_blank" data-eid="qd_G10">Tiên Hiệp</a>
-                        
+                                            {% if current_user.is_authenticated %}
+                                        {% if truyen not in current_user.followed_truyens %}
+                                            <form id="follow-form" action="{{ url_for('main.follow_truyen', route_name='cauma', truyen_id=truyen.Truyen_id) }}"  method="post">
+                                                <button type="submit" id="follow-btn"><i class="fa-solid fa-heart" type="follow"></i></button>
+                                            </form>
+                                        {% else %}
+                                            <form id="unfollow-form" action="{{ url_for('main.unfollow_truyen', route_name='cauma', truyen_id=truyen.Truyen_id) }}" method="post">
+                                                <button type="submit" id="unfollow-btn"><i class="fa-solid fa-heart"></i></button>
+                                            </form>
+                                        {% endif %}
+                                    {% endif %}
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#follow-form').submit(function (e) {
+                                            e.preventDefault();
+                                            $.post($(this).attr('action'), function () {
+                                                $('#follow-btn').text('Unfollow');
+                                                $('#follow-form').attr('id', 'unfollow-form');
+                                                $('#unfollow-form').attr('action', '{{ url_for('main.unfollow_truyen', route_name='cauma', truyen_id=truyen.Truyen_id) }}');
+                                            });
+                                        });
+
+                                        // Unfollow button click
+                                        $('#unfollow-form').submit(function (e) {
+                                            e.preventDefault();
+                                            $.post($(this).attr('action'), function () {
+                                                $('#unfollow-btn').text('Follow');
+                                                $('#unfollow-form').attr('id', 'follow-form');
+                                                $('#follow-form').attr('action', '{{ url_for('main.follow_truyen', route_name='cauma', truyen_id=truyen.Truyen_id) }}');
+                                            });
+                                        });
+                                    });
+                                    </script>
                 </p>
                 
                 <p class="intro">Cầu ma là câu chuyện Tiên Hiệp kể về tô minh - một...</t></p>

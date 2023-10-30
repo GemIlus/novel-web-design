@@ -10,6 +10,8 @@
         
         <link rel="stylesheet" href="/static/css/bookstyle.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     </head>
 <!-- ... (head and other parts remain unchanged) -->
 
@@ -99,7 +101,7 @@
                 <img src="static/img/tiennghichimg.jpg">
                 </a>
                 <button class="read-button">
-                    <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=7, chuong_so= 1) }}" id="reading">
+                    <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=9, chuong_so= 1) }}" id="reading">
                         <h3 id="rea">
                             Đọc
                         </h3>
@@ -111,19 +113,42 @@
                 <p class="tag">
                     <a href="{{url_for('main.author')}}" class="blue">Nhĩ Căn</a>
                                 <span class="blue">Đã hoàn thành</span>
-                                            <a href="{{url_for('main.tienhiep')}}" class="red" target="_blank" data-eid="qd_G10">Tiên Hiệp</a>
-                                            
-                                            {% if current_user.is_authenticated %}
-                                            {% if truyen not in current_user.followed_truyens %}
-                                              <form action="{{ url_for('main.follow_truyen', truyen_id=truyen.Truyen_id) }}" method="post">
-                                                <button type="submit">Follow</button>
-                                              </form>
-                                            {% else %}
-                                              <form action="{{ url_for('main.unfollow_truyen', truyen_id=truyen.Truyen_id) }}" method="post">
-                                                <button type="submit">Unfollow</button>
-                                              </form>
-                                            {% endif %}
-                                          {% endif %}    
+                                    <a href="{{ url_for('main.tienhiep') }}" class="red" target="_blank" data-eid="qd_G10">Tiên Hiệp</a>
+
+                                    {% if current_user.is_authenticated %}
+                                        {% if truyen not in current_user.followed_truyens %}
+                                            <form id="follow-form" action="{{ url_for('main.follow_truyen', route_name='tiennghich', truyen_id=truyen.Truyen_id) }}"  method="post">
+                                                <button type="submit" id="follow-btn"><i class="fa-solid fa-heart" type="follow"></i></button>
+                                            </form>
+                                        {% else %}
+                                            <form id="unfollow-form" action="{{ url_for('main.unfollow_truyen', route_name='tiennghich', truyen_id=truyen.Truyen_id) }}" method="post">
+                                                <button type="submit" id="unfollow-btn"><i class="fa-solid fa-heart"></i></button>
+                                            </form>
+                                        {% endif %}
+                                    {% endif %}
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#follow-form').submit(function (e) {
+                                            e.preventDefault();
+                                            $.post($(this).attr('action'), function () {
+                                                $('#follow-btn').text('Unfollow');
+                                                $('#follow-form').attr('id', 'unfollow-form');
+                                                $('#unfollow-form').attr('action', '{{ url_for('main.unfollow_truyen', route_name='tiennghich', truyen_id=truyen.Truyen_id) }}');
+                                            });
+                                        });
+
+                                        // Unfollow button click
+                                        $('#unfollow-form').submit(function (e) {
+                                            e.preventDefault();
+                                            $.post($(this).attr('action'), function () {
+                                                $('#unfollow-btn').text('Follow');
+                                                $('#unfollow-form').attr('id', 'follow-form');
+                                                $('#follow-form').attr('action', '{{ url_for('main.follow_truyen', route_name='tiennghich', truyen_id=truyen.Truyen_id) }}');
+                                            });
+                                        });
+                                    });
+                                    </script>
+                                    
                 </p>
                 
                 <p class="intro">Tiên Nghịch là câu chuyện Tiên Hiệp kể về Vương Lâm - một...</t></p>
@@ -146,6 +171,7 @@
                 
                         <div class="column">
                             <ul class="chapter-list">
+                                <form action="url_for{{'main.User'}}"  method="post" id="history-form">
                                 {% for chuong in chuong_list[:685] %}
                                     <li>
                                         <a href="{{ url_for('main.tien_nghich_chuong', truyen_id=truyen.Truyen_id, chuong_so=chuong.Chuong_so) }}">
@@ -153,6 +179,7 @@
                                         </a>
                                     </li>
                                 {% endfor %}
+                                </form>
                             </ul>
                         </div>
                         <div class="column">

@@ -95,3 +95,13 @@
     flex: 1;
     margin: 10px;
 }
+
+.fl-table{
+    display: flex;
+    justify-content: space-around;
+    margin-right:30px
+}
+
+.fl-table li{
+    padding-top:20px
+}

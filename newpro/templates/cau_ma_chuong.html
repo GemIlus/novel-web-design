@@ -89,13 +89,13 @@
                     </h2>
     <div class="chapter-navigation">
         {% if prev_chuong %}
-            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
+            <a href="{{ url_for('main.view_chapter', truyen_id=truyen.Truyen_id, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
                 <i class="fa-solid fa-backward-step"></i>
             </a>
         {% endif %}
         
         {% if next_chuong %}
-            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
+            <a href="{{ url_for('main.view_chapter', truyen_id=truyen.Truyen_id, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
                 <i class="fa-solid fa-forward-step" ></i>
             </a>
         {% endif %}
@@ -104,13 +104,13 @@
     <br>
     <div class="chapter-navigation">
         {% if prev_chuong %}
-            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
+            <a href="{{ url_for('main.view_chapter', truyen_id=truyen.Truyen_id, chuong_so=prev_chuong.Chuong_so) }}" class="next-butt">
                 <i class="fa-solid fa-backward-step"></i>
             </a>
         {% endif %}
         
         {% if next_chuong %}
-            <a href="{{ url_for('main.cau_ma_chuong', truyen_id=1, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
+            <a href="{{ url_for('main.view_chapter', truyen_id=truyen.Truyen_id, chuong_so=next_chuong.Chuong_so) }}" class="next-butt">
                 <i class="fa-solid fa-forward-step" ></i>
             </a>
         {% endif %}

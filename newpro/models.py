@@ -79,5 +79,6 @@ class FollowedTruyen(db.Model):
 
     user_fl_id=db.Column(db.Integer, db.ForeignKey('user.User_id'), nullable=False)
     truyen_fl_id = db.Column(db.Integer, db.ForeignKey('truyen.Truyen_id'), nullable=False)
+    route_name = db.Column(db.String(50), nullable=False)
 
     
